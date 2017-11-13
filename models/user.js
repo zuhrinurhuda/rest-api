@@ -8,18 +8,16 @@ module.exports = (sequelize, DataTypes) => {
     isAdmin: DataTypes.STRING
   });
 
-  User.beforeCreate((user, options) => {
+  User.beforeCreate(function(user, options) {
     const saltRounds = 10;
-    const myPlaintextPassword = user.password;
-    return  bcrypt.hash(myPlaintextPassword, saltRounds).then(function(hash) {
+    return  bcrypt.hash(user.password, saltRounds).then(function(hash) {
       user.password = hash
     });
   });
 
-  User.beforeUpdate((user, options) => {
+  User.beforeUpdate(function(user, options) {
     const saltRounds = 10;
-    const myPlaintextPassword = user.password;
-    return  bcrypt.hash(myPlaintextPassword, saltRounds).then(function(hash) {
+    return  bcrypt.hash(user.password, saltRounds).then(function(hash) {
       user.password = hash
     });
   });

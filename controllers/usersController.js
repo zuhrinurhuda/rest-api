@@ -41,7 +41,9 @@ const destroy = (req, res) => {
 }
 
 const update = (req, res) => {
-  User.update(req.body, {where: req.params})
+  console.log(req.params);
+  console.log(req.body);
+  User.update(req.body, {where: {id: req.params.id}, individualHooks: true})
   .then(() => {
     res.send('success update user')
   })

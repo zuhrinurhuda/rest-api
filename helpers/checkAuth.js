@@ -13,7 +13,7 @@ const isLogin = (req, res, next) => {
 }
 
 const isAdmin = (req, res, next) => {
-  if(req.verifyUser.isAdmin == 'true') {
+  if(req.verifyUser.isAdmin) {
     next()
   } else {
     res.send('only Admin can access')
@@ -21,7 +21,7 @@ const isAdmin = (req, res, next) => {
 }
 
 const isUser = (req, res, next) => {
-  if(req.verifyUser.isAdmin == 'true' || req.verifyUser.id == req.params.id) {
+  if(req.verifyUser.isAdmin || req.verifyUser.id == req.params.id) {
     next()
   } else {
     res.send('wrong user')
