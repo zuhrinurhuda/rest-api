@@ -33,6 +33,7 @@ npm install
 npm start
 npm run dev
 ```
-
+## Before You Run It
+Fill your SECRET_KEY in .env-template file, and rename the file to .env
 Access the website via `http://localhost:3000` or API via
 `http://localhost:3000/api`
